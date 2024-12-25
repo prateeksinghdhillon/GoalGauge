@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/GoalGauge/static/css/main.b5fc778d.css",
+    "main.js": "/GoalGauge/static/js/main.1c5a1916.js",
+    "static/js/488.0c4b69c5.chunk.js": "/GoalGauge/static/js/488.0c4b69c5.chunk.js",
+    "static/media/up-arrow.png": "/GoalGauge/static/media/up-arrow.7d1b46624e1a065f3181.png",
+    "static/media/add-button.png": "/GoalGauge/static/media/add-button.c17e82c1314e7ddacdec.png",
+    "index.html": "/GoalGauge/index.html",
+    "main.b5fc778d.css.map": "/GoalGauge/static/css/main.b5fc778d.css.map",
+    "main.1c5a1916.js.map": "/GoalGauge/static/js/main.1c5a1916.js.map",
+    "488.0c4b69c5.chunk.js.map": "/GoalGauge/static/js/488.0c4b69c5.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b5fc778d.css",
+    "static/js/main.1c5a1916.js"
+  ]
+}
