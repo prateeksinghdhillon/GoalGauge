@@ -52,8 +52,8 @@ jobs:
         run: ls -al ./build
 
       # Upload build artifacts for deployment
-      - name: Upload Production-Ready Build
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload production-ready build
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
 
@@ -63,7 +63,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-
     steps:
       # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
