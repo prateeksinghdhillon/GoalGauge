@@ -27,26 +27,3 @@
 .App-link {
   color: #61dafb;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.pop-up{
-  top: -50px;
-  animation: pop-up-ani infinite 1s linear;
-}
-
-@keyframes pop-up-ani{
-  from {
-    top: -120px;
-  }
-  to {
-    top:-180px;
-  }
-}

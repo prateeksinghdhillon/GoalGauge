@@ -1,0 +1,15 @@
+
+
+.pop-up {
+  color: white;
+  animation: pop-up-ani infinite .5s linear;
+}
+
+@keyframes pop-up-ani {
+  from {
+    top: -10px;
+  }
+  to {
+    top: -80px;
+  }
+}

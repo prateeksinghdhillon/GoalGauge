@@ -1,0 +1,21 @@
+.profile {
+  right: 25px;
+  position: fixed;
+  top: 15px;
+  border: 2px solid #989696;
+  border-radius: 20px;
+  height: 36px;
+  z-index: 12;
+  cursor: pointer;
+}
+.dropdown {
+  cursor: pointer;
+  background-color: white;
+  right: 20px;
+  position: fixed;
+  top: 60px;
+  padding: 10px;
+  font-weight: bold;
+  z-index: 12;
+  border-radius: 10px;
+}

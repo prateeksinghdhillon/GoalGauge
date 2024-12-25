@@ -1,0 +1,40 @@
+/* Modal Overlay */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  /* Modal Container */
+  .modal-container_delete {
+    background-color: #2b2b2b;
+    padding: 50px;
+    border-radius: 8px;
+    /* width: 36%; */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    text-align: center;
+    display: flex
+;
+    flex-direction: column;
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #00aaff;
+  }
+  .confrim-btn{
+    background-color: #1e1e2f;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+  }
