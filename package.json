@@ -2,6 +2,7 @@
   "name": "my-progrees",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://prateeksinghdhillon.github.io/GoalGauge",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -18,7 +19,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
-    "build": "react-scripts build",
+    "build": "env-cmd -f .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -41,6 +42,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "web-vitals": "^4.2.4"
   }
 }
