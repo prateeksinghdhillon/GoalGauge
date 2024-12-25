@@ -140,7 +140,7 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
               </span>
             </div>
             <div style={styles.countdown}>
-              <label style={styles.label}>Lectures: </label>
+              <label style={styles.label}>{act.actionName}: </label>
               <span style={styles.days}>
                 {act.actionsDone} / {act.totalActions}
               </span>
