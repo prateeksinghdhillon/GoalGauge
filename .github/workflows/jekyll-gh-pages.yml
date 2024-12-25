@@ -1,4 +1,4 @@
-name: Deploy Jekyll Site to GitHub Pages
+name: Deploy React App to GitHub Pages
 
 on:
   push:
@@ -16,19 +16,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repository code
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      # Set up Node.js environment
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          ruby-version: '3.1' # Adjust this to the Ruby version your project requires
+          node-version: '18'
 
-      - name: Install Dependencies
-        run: |
-          bundle config set --local path 'vendor/bundle'
-          bundle install
-
+      # Create .env file from GitHub Secrets
       - name: Create .env File
         run: |
           echo "REACT_APP_APP_ENV=${{ secrets.REACT_APP_APP_ENV }}" >> .env
@@ -41,21 +39,29 @@ jobs:
           echo "REACT_DATABASE_URL=${{ secrets.REACT_DATABASE_URL }}" >> .env
           echo "REACT_MEASUREMENT_ID=${{ secrets.REACT_MEASUREMENT_ID }}" >> .env
 
-      - name: Build Jekyll Site
-        run: bundle exec jekyll build
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
 
+      # Build the React app
+      - name: Build React App
+        run: npm run build
+
+      # Upload build artifacts for deployment
       - name: Upload Production-Ready Build
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./_site
+          path: ./build
 
   deploy:
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
 
     steps:
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
