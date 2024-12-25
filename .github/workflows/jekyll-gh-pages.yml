@@ -47,6 +47,10 @@ jobs:
       - name: Build React App
         run: npm run build
 
+      # Debug build directory
+      - name: Debug Build Directory
+        run: ls -al ./build
+
       # Upload build artifacts for deployment
       - name: Upload Production-Ready Build
         uses: actions/upload-pages-artifact@v1
