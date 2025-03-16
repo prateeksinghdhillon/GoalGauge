@@ -21,7 +21,10 @@ import DeleteActionModal from "./deleteModal/deleteModal";
 const ProgressBar = forwardRef(({ userId }, ref) => {
   const [showOne, setShowOne] = useState([]);
   const [actions, setActions] = useState([]);
-  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [deleteModalState, setDeleteModalState] = useState({
+    isOpen: false,
+    actionId: null,
+  });
 
   const fetchActions = useCallback(
     async (userId) => {
@@ -82,7 +85,7 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
 
   useEffect(() => {
     fetchActions(userId);
-  }, [fetchActions,userId]);
+  }, [fetchActions, userId]);
 
   const calculateDaysLeft = (targetDate) => {
     const currentDate = new Date();
@@ -115,7 +118,7 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
 
   return (
     <>
-      { actions.map((act) => {
+      {actions.map((act) => {
         return (
           <div style={styles.container}>
             <h2 style={styles.heading}>
@@ -180,19 +183,19 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
             >
               <img
                 onClick={() => {
-                  setIsDeleteModalOpen(true);
+                  setDeleteModalState({ isOpen: true, actionId: act.id });
                 }}
                 alt=""
                 src={trash}
                 style={{ height: "26px", cursor: "pointer" }}
-              ></img>
+              />
               <DeleteActionModal
-                isOpen={isDeleteModalOpen}
+                isOpen={deleteModalState.isOpen}
                 onClose={(con) => {
-                  if (con === "yes") {
-                    handleDeleteAction(act.id);
+                  if (con === "yes" && deleteModalState.actionId) {
+                    handleDeleteAction(deleteModalState.actionId);
                   }
-                  setIsDeleteModalOpen(false);
+                  setDeleteModalState({ isOpen: false, actionId: null });
                 }}
               />
             </div>

@@ -1,0 +1,115 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e2f;
+    padding: 0 20px;
+    height: 60px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .navbar-logo h2 {
+    color: #ffffff;
+    margin: 0;
+    font-size: 22px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar-link {
+    color: #aaaaaa;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 0;
+    transition: all 0.3s;
+  }
+  
+  .navbar-link:hover {
+    color: #ffffff;
+  }
+  
+  .navbar-link.active {
+    color: #4caf50;
+    font-weight: bold;
+    border-bottom: 2px solid #4caf50;
+  }
+  
+  .navbar-profile {
+    position: relative;
+  }
+  
+  .profile-image {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #4caf50;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .profile-image:hover {
+    transform: scale(1.05);
+  }
+  
+  .profile-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #1e1e2f;
+    border-radius: 8px;
+    width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    overflow: hidden;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+  }
+  
+  .user-name {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .user-email {
+    color: #aaa;
+    font-size: 12px;
+    word-break: break-all;
+  }
+  
+  .logout-button {
+    width: 100%;
+    padding: 12px;
+    background: none;
+    border: none;
+    color: #ff5252;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .logout-button:hover {
+    background-color: rgba(255, 82, 82, 0.1);
+  }
+  
+  /* Update content container for pages */
+  .content-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }

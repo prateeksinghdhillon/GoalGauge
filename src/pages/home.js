@@ -1,21 +1,18 @@
-import LoginWithGoogle from "../components/login/login";
-import React, { useRef, useState } from "react";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { useAuth } from "../utils/context/AuthContext";
-import ActionDetailsModal from "../components/addModal/ActionDetailsModal";
-import ProgressBar from "../components/ProgressBar";
-
+import LoginWithGoogle from "../components/login/login";
+import Navbar from "../components/navbar/navbar";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import ProgressPage from "../pages/Progress/ProgressPage";
 import "./home.css";
-import addBtn from "../asstes/add-button.png";
 
 const Home = () => {
-  const childRef = useRef();
-  const handleTriggerChildFunction = () => {
-    if (childRef.current) {
-      childRef.current.triggerFunction();
-    }
-  };
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isDropdown, setIsDropdown] = useState(false);
   const { user, isLoggedIn, logout } = useAuth();
 
   return (
@@ -34,77 +31,29 @@ const Home = () => {
           <LoginWithGoogle />
         </div>
       ) : (
-        <div
-          style={{
-            backgroundColor: "#121212",
-            minHeight: "100vh",
-            padding: "20px",
-            paddingTop:"50px",
-            display: "flex",
-            gap: "10px",
-            alignItems: "center",
-            justifyContent: "center",
-            flexWrap: "wrap",
-          }}
-        >
-          <div>
-            <img
-              onClick={() => {
-                setIsDropdown((pre) => !pre);
-              }}
-              className="profile"
-              src={user.photoURL}
-              alt=""
-            ></img>
-          </div>
-          {isDropdown ? (
-            <div
-              onClick={() => {
-                logout();
-                setIsDropdown((pre) => !pre);
-              }}
-              className="dropdown"
-            >
-              logout
-            </div>
-          ) : (
-            ""
-          )}
-          <ProgressBar ref={childRef} userId={user.uid} />
-
+        <Router>
           <div
             style={{
-              position: "relative",
-              backgroundColor: "#1e1e2f",
-              color: "#ffffff",
-              padding: "20px",
-              borderRadius: "10px",
-              width: "300px",
-              fontFamily: "'Arial', sans-serif",
-              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.5)",
+              backgroundColor: "#121212",
+              minHeight: "100vh",
               display: "flex",
-              justifyContent: "center",
-              height: "176px",
-              alignItems: "center",
+              flexDirection: "column",
             }}
           >
-            <img
-              height={100}
-              style={{ height: "176px" }}
-              onClick={() => setIsModalOpen(true)}
-              src={addBtn}
-              alt=""
-            />
+            <Navbar user={user} onLogout={logout} />
+
+            <div className="content-container">
+              <Routes>
+                <Route path="/" element={<Dashboard userId={user.uid} />} />
+                <Route
+                  path="/progress"
+                  element={<ProgressPage userId={user.uid} />}
+                />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </div>
           </div>
-          <ActionDetailsModal
-            isOpen={isModalOpen}
-            onClose={() => {
-              setIsModalOpen(false);
-              handleTriggerChildFunction();
-            }}
-            userId={user.uid}
-          />
-        </div>
+        </Router>
       )}
     </>
   );
