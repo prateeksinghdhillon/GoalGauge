@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
-    "build": "react-scripts build",
+    "build": "vercel env pull env-cmd -f .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
