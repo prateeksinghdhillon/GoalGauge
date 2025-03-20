@@ -1,284 +1,568 @@
 .dashboard-container {
-  color: white;
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.dashboard-title {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 28px;
-  color: #ffffff;
-}
-
-.stats-overview {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.stats-overview .stat-card {
-  flex: 1;
-  min-width: 300px;
-}
-
-.stats-detail-row {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.stats-detail-row .stat-card {
-  flex: 1;
-  min-width: 300px;
-}
-
-.stat-card {
-  background-color: #1e1e2f;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.stat-card h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 18px;
-  color: #4caf50;
-  border-bottom: 1px solid #333;
-  padding-bottom: 10px;
-}
-
-/* Progress Circle */
-.progress-circle {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 20px;
-}
-
-.progress-circle-inner {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.progress-percentage {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.stat-detail {
-  text-align: center;
-  color: #aaa;
-}
-
-/* Action Summary */
-.action-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.summary-item {
-  display: flex;
-  justify-content: space-between;
-}
-
-.summary-label {
-  color: #aaa;
-}
-
-.summary-value {
-  font-weight: bold;
-}
-
-/* Performance Bars */
-.performance-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.performance-bar-item {
-  margin-bottom: 10px;
-}
-
-.performance-bar-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.performance-bar-container {
-  background-color: #33334d;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.performance-bar-progress {
-  background-color: #4caf50;
-  height: 100%;
-  border-radius: 5px;
-  transition: width 0.5s ease-in-out;
-}
-
-/* Deadlines */
-.deadlines-list {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.deadline-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #33334d;
-}
-
-.deadline-info h4 {
-  margin: 0 0 5px 0;
-}
-
-.deadline-date {
-  color: #aaa;
-  margin: 0;
-  font-size: 14px;
-}
-
-.days-left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.days-number {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.days-label {
-  font-size: 12px;
-  color: #aaa;
-}
-
-/* Highlight Cards */
-.action-highlight {
-  padding: 15px;
-  background-color: #33334d;
-  border-radius: 8px;
-}
-
-.action-highlight h4 {
-  margin-top: 0;
-  margin-bottom: 15px;
-}
-
-.highlight-progress {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.highlight-progress-bar {
-  flex-grow: 1;
-  background-color: #444;
-  height: 10px;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.highlight-progress-fill {
-  background-color: #4caf50;
-  height: 100%;
-  border-radius: 5px;
-  transition: width 0.5s ease-in-out;
-}
-
-.highlight-progress-warning {
-  background-color: #ff9800;
-}
-
-.highlight-percentage {
-  font-weight: bold;
-  min-width: 40px;
-  text-align: right;
-}
-
-.highlight-detail {
-  color: #aaa;
-  margin: 10px 0;
-}
-
-.days-remaining {
-  color: #ff9800;
-  font-weight: bold;
-  margin: 5px 0 0 0;
-}
-
-.no-data-message {
-  color: #888;
-  text-align: center;
-  font-style: italic;
-  padding: 20px 0;
-}
-
-.action-performance {
-  max-height: 350px;
-  overflow-y: auto;
-}
-
-.action-performance::-webkit-scrollbar {
-  width: 6px;
-}
-
-.action-performance::-webkit-scrollbar-track {
-  background: #33334d;
-  border-radius: 3px;
-}
-
-.action-performance::-webkit-scrollbar-thumb {
-  background: #555;
-  border-radius: 3px;
-}
-
-.action-performance::-webkit-scrollbar-thumb:hover {
-  background: #666;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .stats-overview,
-  .stats-detail-row {
-    flex-direction: column;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
   }
-
+  
+  .dashboard-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .stats-overview {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 20px;
+  }
+  
   .stat-card {
-    min-width: unset;
-    width: 85%;
+    background-color: #1e1e2f;
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    flex: 1;
+    min-width: 300px;
+    margin-right: 20px;
   }
-}
-
-/* Animation for progress bars */
-@keyframes fillProgress {
-  from {
-    width: 0;
+  
+  .stat-card:last-child {
+    margin-right: 0;
   }
-}
+  
+  .stat-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-align: center;
+    color: #4caf50;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+  }
+  
+  /* Activities Graph Styling */
+  .daily-activities-card {
+    width: 100%;
+  }
+  
+  .activities-graph {
+    height: 300px;
+    width: 100%;
+    position: relative;
+  }
+  
+  /* LeetCode-style Monthly Heatmap */
+  .monthly-heatmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .month-heatmap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .month-label {
+    width: 40px;
+    text-align: right;
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  .month-days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    flex: 1;
+  }
+  
+  .day-cell {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    background-color: #333;
+    transition: background-color 0.3s ease;
+  }
+  
+  .day-cell.active {
+    background-color: #4caf50;
+  }
+  
+  .progress-circle {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 20px;
+  }
+  
+  .progress-circle-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .progress-percentage {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .stat-detail {
+    text-align: center;
+    margin-top: 10px;
+    color: #aaa;
+  }
+  
+  .action-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px 0;
+    border-bottom: 1px solid #333;
+  }
+  
+  .summary-item:last-child {
+    border-bottom: none;
+  }
+  
+  .summary-label {
+    font-weight: bold;
+    color: #aaa;
+  }
+  
+  .summary-value {
+    font-weight: bold;
+  }
+  
+  .stats-detail-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    gap: 20px;
+  }
+  
+  .stats-detail-row .stat-card {
+    width: 48%;
+    margin-right: 2%;
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .stats-detail-row .stat-card:last-child {
+    margin-right: 0;
+  }
+  
+  .performance-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .performance-bar-item {
+    margin-bottom: 15px;
+  }
+  
+  .performance-bar-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .performance-bar-container {
+    height: 8px;
+    background-color: #33334d;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .performance-bar-progress {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.5s ease-in-out;
+    animation: fillProgress 1s ease-out;
+  }
+  
+  .deadlines-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .deadline-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #33334d;
+    align-items: center;
+  }
+  
+  .deadline-item:last-child {
+    border-bottom: none;
+  }
+  
+  .deadline-info h4 {
+    margin: 0 0 5px 0;
+  }
+  
+  .deadline-date {
+    color: #aaa;
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .days-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .days-number {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .days-label {
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  /* Streak Card */
+  .streak-card {
+    text-align: center;
+  }
+  
+  .streak-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .streak-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #33334d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px;
+    border: 3px solid #4caf50;
+  }
+  
+  .streak-number {
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1;
+  }
+  
+  .streak-label {
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  .streak-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .streak-detail {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .streak-detail-label {
+    color: #aaa;
+  }
+  
+  .streak-detail-value {
+    font-weight: bold;
+  }
+  
+  /* Daily Progress Graph */
+  .daily-progress-card {
+    width: 100%;
+  }
+  
+  .daily-progress-graph {
+    height: 200px;
+    position: relative;
+  }
+  
+  .graph-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 160px;
+    width: 100%;
+    border-bottom: 1px solid #333;
+  }
+  
+  .graph-bar-container {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .graph-bar {
+    width: 6px;
+    height: 0%;
+    background-color: #4caf50;
+    transition: height 0.5s ease-in-out;
+    animation: growUp 1s ease-out;
+    border-radius: 3px 3px 0 0;
+  }
+  
+  .graph-date {
+    font-size: 8px;
+    color: #aaa;
+    margin-top: 5px;
+    text-align: center;
+  }
+  
+  .graph-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .graph-y-label {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    font-size: 12px;
+    color: #aaa;
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+  }
+  
+  .graph-x-label {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 10px;
+  }
+  
+  /* Heatmap Legend */
+  .heatmap-legend {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  .legend-color {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+  }
+  
+  /* Action Highlight Section */
+  .action-highlight {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #33334d;
+    margin-top: 10px;
+  }
+  
+  .action-highlight h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+  }
+  
+  .highlight-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .highlight-progress-bar {
+    flex: 1;
+    height: 8px;
+    background-color: #333;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .highlight-progress-fill {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  .highlight-progress-warning {
+    background-color: #ff9800;
+  }
+  
+  .highlight-percentage {
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .highlight-detail {
+    color: #aaa;
+    font-size: 14px;
+    margin: 5px 0;
+  }
+  
+  .days-remaining {
+    color: #ff9800;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+  }
+  
+  .no-data-message {
+    text-align: center;
+    color: #aaa;
+    padding: 20px 0;
+  }
+  
+  /* Keyframe Animations */
+  @keyframes fillProgress {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+  
+  @keyframes growUp {
+    0% { height: 0; }
+    100% { height: 100%; }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .stats-overview {
+      flex-direction: column;
+    }
+    
+    .stat-card {
+      width: 85%;
+      margin-right: 0;
+    }
+    
+    .stats-detail-row {
+      flex-direction: column;
+    }
+    
+    .stats-detail-row .stat-card {
+      width: 85%;
+      margin-right: 0;
+    }
+    
+    .month-heatmap {
+      overflow-x: auto;
+    }
+    
+    .graph-bar {
+      width: 4px;
+    }
+  }
+  
+  /* Dark theme enhancement */
+  body.dark-theme .stat-card {
+    background-color: #1a1a2e;
+  }
+  
+  body.dark-theme .performance-bar-container,
+  body.dark-theme .highlight-progress-bar,
+  body.dark-theme .streak-circle {
+    background-color: #222236;
+  }
+  
+  /* Tooltips */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
 
-.performance-bar-progress,
-.highlight-progress-fill {
-  animation: fillProgress 1s ease-out;
-}
+  /* Activities Graph Styling - Mobile Enhancements */
+@media (max-width: 768px) {
+    .daily-activities-card {
+      width: 85%;
+      overflow-x: hidden;
+    }
+  
+    .activities-graph {
+      height: auto;
+      min-height: 250px;
+      margin: 0 -10px; /* Counteract padding on mobile */
+    }
+  
+    /* Adjust XAxis label visibility on small screens */
+    .recharts-cartesian-axis-tick text {
+      font-size: 8px !important; /* Smaller font */
+    }
+  
+    /* Adjust LineChart responsiveness */
+    .recharts-wrapper,
+    .recharts-surface {
+      width: 100% !important;
+      overflow: visible;
+    }
+  
+    /* Improve tooltip visibility on mobile */
+    .recharts-tooltip-wrapper {
+      z-index: 10;
+    }
+  }
+  
+  /* Add additional styles to help with chart rendering */
+  .daily-activities-card .recharts-responsive-container {
+    width: 100% !important;
+    height: 250px !important;
+  }

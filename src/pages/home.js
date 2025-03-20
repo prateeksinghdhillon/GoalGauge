@@ -44,12 +44,12 @@ const Home = () => {
 
             <div className="content-container">
               <Routes>
-                <Route path="/" element={<Dashboard userId={user.uid} />} />
+                <Route path="/dashboard" element={<Dashboard userId={user.uid} />} />
                 <Route
                   path="/progress"
                   element={<ProgressPage userId={user.uid} />}
                 />
-                <Route path="*" element={<Navigate to="/" replace />} />
+                <Route path="*" element={<Navigate to="/dashboard" replace />} />
               </Routes>
             </div>
           </div>

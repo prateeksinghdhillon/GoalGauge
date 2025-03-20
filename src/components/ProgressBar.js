@@ -13,6 +13,10 @@ import {
   doc,
   getDocs,
   updateDoc,
+  getDoc,
+  setDoc,
+  serverTimestamp,
+  increment,
 } from "firebase/firestore";
 import "./progress.css";
 import { db } from "../utils/firebase";
@@ -37,12 +41,12 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
           ...doc.data(),
         }));
         setActions(act);
-        return act; // Return the fetched actions instead of state
+        return act;
       } catch (error) {
         console.error("Error fetching actions: ", error);
       }
     },
-    [] // Dependencies for useCallback
+    []
   );
 
   const updateAction = async (userId, actionId, updatedActionsDone) => {
@@ -51,33 +55,58 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
       await updateDoc(actionDocRef, {
         actionsDone: updatedActionsDone,
       });
+      
+      // Update daily progress
+      await updateDailyProgress(userId);
     } catch (error) {
       console.error("Error updating action: ", error);
     }
   };
+
+  const updateDailyProgress = async (userId) => {
+    try {
+      // Get today's date in YYYY-MM-DD format
+      const today = new Date().toISOString().split('T')[0];
+      
+      // Reference to the daily progress document
+      const dailyProgressRef = doc(db, "users", userId, "progress", "daily");
+      
+      // Get the existing document
+      const dailyProgressDoc = await getDoc(dailyProgressRef);
+      
+      if (dailyProgressDoc.exists()) {
+        // Update the existing document
+        await updateDoc(dailyProgressRef, {
+          [today]: increment(1),
+          lastUpdated: serverTimestamp(),
+        });
+      } else {
+        // Create a new document with today's entry
+        await setDoc(dailyProgressRef, {
+          [today]: 1,
+          lastUpdated: serverTimestamp(),
+        });
+      }
+    } catch (error) {
+      console.error("Error updating daily progress: ", error);
+    }
+  };
+
   useImperativeHandle(ref, () => ({
     triggerFunction() {
       fetchActions(userId);
     },
   }));
-  /**
-   * Deletes an action for a user in Firestore.
-   *
-   * @param {string} userId - The ID of the user.
-   * @param {string} actionId - The ID of the action to be deleted.
-   * @returns {void}
-   */
+
   const deleteAction = async (userId, actionId) => {
     try {
-      // Reference to the specific action document
       const actionDocRef = doc(db, "users", userId, "actions", actionId);
-
-      // Delete the document
       await deleteDoc(actionDocRef);
     } catch (error) {
       console.error("Error deleting action: ", error);
     }
   };
+  
   const handleDeleteAction = async (actionId) => {
     deleteAction(userId, actionId);
     fetchActions(userId);
@@ -120,7 +149,7 @@ const ProgressBar = forwardRef(({ userId }, ref) => {
     <>
       {actions.map((act) => {
         return (
-          <div style={styles.container}>
+          <div style={styles.container} key={act.id}>
             <h2 style={styles.heading}>
               {toTitleCase(act.actionName)} Tracker
             </h2>
